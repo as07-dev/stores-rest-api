@@ -1,6 +1,7 @@
 # Requirements for the project
 # start with "pip install -r requirements.txt"
-flask != 2.0
-flask-restful != 0.3
-flask-jwt != 0.3
+flask
+flask-restful
+flask-jwt
 flask-SQLALCHEMY
+uwsgi
