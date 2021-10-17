@@ -11,18 +11,18 @@ from db import db
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/localhost'
 
-# POSTGRES = {
-#     'user': 'postgres',
-#     'pw': 'postgres',
-#     'db': 'data',
-#     'host': '127.0.0.1',
-#     'port': '5432',
-# }
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
-# %(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+POSTGRES = {
+    'user': 'postgres',
+    'pw': 'postgres',
+    'db': 'data',
+    'host': '127.0.0.1',
+    'port': '5432',
+}
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
+%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 
 db.init_app(app)
 app.secret_key = 'jose'
