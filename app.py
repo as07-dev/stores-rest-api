@@ -31,17 +31,6 @@ app.secret_key = 'jose'
 api = Api(app)
 
 
-# Erstellung von Datenbank
-@app.before_first_request
-def create_tables():
-    if not database_exists(app.config["SQLALCHEMY_DATABASE_URI"]):
-        with sqlalchemy.create_engine(
-            'postgresql:///postgres',
-            isolation_level='AUTOCOMMIT').connect() as connection:
-            connection.execute('CREATE DATABASE data')
-    db.create_all()
-
-
 jwt = JWT(app, authenticate, identity)  # creates endpoint called /auth
 
 api.add_resource(Store, '/store/<string:name>')
