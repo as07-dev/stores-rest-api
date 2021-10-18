@@ -6,3 +6,4 @@ flask-jwt
 flask-SQLALCHEMY
 # sqlalchemy_utils
 uwsgi
+psycopg2

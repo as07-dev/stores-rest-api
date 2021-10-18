@@ -1,7 +1,10 @@
+import os
+
 import sqlalchemy
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
+
 from security import authenticate, identity
 from resources.user import UserRegister
 from resources.item import Item, ItemList
@@ -10,8 +13,10 @@ from db import db
 
 
 app = Flask(__name__)
+# DATABASE_URL - Umgebungsvaraible in heroku, sqllite - lokal, als zweite Variante
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/localhost'
 
 # POSTGRES = {
